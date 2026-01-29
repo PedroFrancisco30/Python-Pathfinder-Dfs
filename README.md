@@ -39,10 +39,11 @@ Este é um simulador de resolução de labirintos que programei, desenvolvido em
 ## Condições de Vitória e Derrota
 
 ### Vitória (Caminho Encontrado)
+```bash
 O algoritmo consegue traçar uma linha contínua de '*' do ponto 'R' até o ponto 'S'.
 
 O programa exibe: "Parabens voce ganhou".
-
+```
 
 ### Derrota (Sem Saída)
 ```bash
