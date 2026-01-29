@@ -51,7 +51,8 @@ O programa exibe: "Parabens voce ganhou".
 * O algoritmo não encontra rota e o programa exibe: "VOCE PERDEU".
 ```
 
-Descrição Final
+### Descrição Final
+
 Este projeto utiliza apenas bibliotecas padrão do Python, sem necessidade de instalação de pacotes externos.
 
 random (para a geração aleatória das posições dos bloqueios)
