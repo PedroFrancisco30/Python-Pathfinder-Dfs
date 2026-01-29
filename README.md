@@ -1,53 +1,56 @@
-# Campo Minado(Python)
+# Solucionador de Labirinto (Python)
 
-Este é um jogo de Campo Minado simples que programei, desenvolvido em Python e jogado diretamente no terminal. O jogador define o tamanho do tabuleiro e o número de minas, e o objetivo é encontrar todas as minas sem detonar nenhuma.
+Este é um simulador de resolução de labirintos que programei, desenvolvido em Python e executado diretamente no terminal. O usuário define o tamanho do tabuleiro e a quantidade de obstáculos, e um algoritmo de busca (backtracking) tenta encontrar, automaticamente, um caminho entre o ponto de partida e a saída.
 
-##  Funcionalidades
-* Tabuleiro Customizável: O jogador pode escolher o número de linhas e colunas (mínimo de 4x4, máximo de 10x10).
-* Dificuldade Ajustável: O jogador define quantas minas estarão escondidas no campo.
-* Lógica de Abertura Recursiva: Ao abrir uma casa que não possui minas vizinhas, o jogo automaticamente revela todas as casas seguras adjacentes (conhecido como flood fill).
+## Funcionalidades
+* **Tabuleiro Customizável:** O jogador pode escolher o número de linhas e colunas para criar mapas de diversos tamanhos.
+* **Geração Aleatória:** Os bloqueios (paredes) são posicionados aleatoriamente pelo mapa a cada execução.
+* **Lógica de Backtracking:** O código utiliza um algoritmo recursivo que "anda" pelo campo, marcando o caminho percorrido e retornando caso encontre um beco sem saída, até achar o destino.
 
-## Duas Formas de Vencer:
-* Marcando corretamente todas as posições com minas (com a letra 'M').
-* Abrindo todas as casas que não possuem minas.
+## Objetivo da Simulação:
+* O algoritmo deve traçar uma rota válida do ponto 'R' (Início) até o ponto 'S' (Saída).
+* O caminho não pode passar por bloqueios ('#') ou sair dos limites do mapa.
 
 ## Como Executar
-    Para jogar, você precisa ter o Python 3 instalado em sua máquina, ai é necessario baixar o arquivo CampoMinado.py,abrir o terminal e navegar ate o diretorio do arquivo e tem que executar o script com Bash python CampoMinado.py
+    Para testar, você precisa ter o Python 3 instalado em sua máquina. É necessário baixar o arquivo do código (ex: Labirinto.py), abrir o terminal, navegar até o diretório do arquivo e executar o script com Bash python Labirinto.py
 
-### Como jogar
+### Como configurar
 
     • Ao iniciar, o programa solicitará que você defina:
-        A quantidade de linhas do Mapa
-        A quantidade de colunas do Mapa
-        A quantidade de bombas que deseja adicionar
+        A quantidade de linhas do Tabuleiro
+        A quantidade de colunas do Tabuleiro
+        A quantidade de bloqueios (paredes) que deseja adicionar
 
-    • Em cada rodada,voce tera duas opções:
-        1) Marcar o mapa: Use esta opção para marcar uma casa que você suspeita conter uma mina. Ela será exibida com um M.
-        2) Abrir posicao no mapa: Use esta opção para revelar o conteúdo de uma casa.
+    • O programa então irá:
+        1) Gerar o mapa com os bloqueios aleatórios.
+        2) Tentar encontrar o caminho automaticamente.
+        3) Exibir o resultado final no terminal.
 
 
-| Ao cliclar em uma          | Resultado                                                | 
+| Símbolo no Mapa            | Significado                                              | 
 | :-------------------------:| :-------------------------------------------------------:|
-|   MINA                     | Voce perde o jogo(BOOOM)                                 | 
-|   CASA SEGURA              | Mostra o numero de minas existentes nas 8 casas vizinhas | 
-|   CASA SEGURA(0 MINAS)     | Jogo abre automaticamente as casas ao redor              | 
+|   R                        | Ponto de Partida (Robô/Início)                           | 
+|   S                        | Ponto de Chegada (Saída/Sucesso)                         | 
+|   #                        | Bloqueio/Parede (Não é possível atravessar)              | 
+|   *                        | Rastro do caminho percorrido pelo algoritmo              | 
+|   -                        | Espaço vazio não visitado                                | 
 
 
 ## Condições de Vitória e Derrota
 
-  ### Vitória
-```
-* O jogador vence ao conseguir marcar com M todas as posições que possuem Minas
-* O jogador conseguir abrir todas casas seguras(que nao contêm minas)
-```
+### Vitória (Caminho Encontrado)
+O algoritmo consegue traçar uma linha contínua de '*' do ponto 'R' até o ponto 'S'.
 
-### Derrota
+O programa exibe: "Parabens voce ganhou".
+
+
+### Derrota (Sem Saída)
 ```bash
-* Abrir uma posição que contém uma mina.
+* Os bloqueios gerados aleatoriamente fecharam todos os caminhos possíveis.
+* O algoritmo não encontra rota e o programa exibe: "VOCE PERDEU".
 ```
 
-## Descrição Final
-
+Descrição Final
 Este projeto utiliza apenas bibliotecas padrão do Python, sem necessidade de instalação de pacotes externos.
 
-random (para a geração aleatória das minas)
+random (para a geração aleatória das posições dos bloqueios)
